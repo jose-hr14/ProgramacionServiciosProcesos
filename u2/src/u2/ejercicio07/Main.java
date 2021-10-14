@@ -1,4 +1,4 @@
-package u2.ejemplo01;
+package u2.ejercicio07;
 
 import java.io.IOException;
 import java.util.Scanner;
