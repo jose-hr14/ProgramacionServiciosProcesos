@@ -13,7 +13,9 @@ public class Main {
             System.out.print("Introduce el nombre que tendrá el documento de salida: ");
             String nombreDoc = new Scanner(System.in).nextLine();
 
-            ProcessBuilder processBuilder = new ProcessBuilder("java","-classpath","C:\\Users\\Joshua\\Documents\\GitHub\\ProgramacionServiciosProcesos\\u2\\out\\production\\u2", "u2.ejercicio09_generador.Main", a, b, nombreDoc);
+            ProcessBuilder processBuilder = new ProcessBuilder("java","-classpath",
+                    "C:\\Users\\Joshua\\Documents\\GitHub\\ProgramacionServiciosProcesos\\u2\\out\\production\\u2",
+                    "u2.ejercicio09_generador.Main", a, b, nombreDoc);
             processBuilder.start();
             System.getProperty("java.class.path");
         } catch (IOException e) {
