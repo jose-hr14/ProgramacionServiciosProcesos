@@ -14,7 +14,7 @@ public class Main {
 
         comandos.add("java");
         comandos.add("-classpath");
-        comandos.add("C:\\Users\\Joshua\\Documents\\GitHub\\ProgramacionServiciosProcesos\\u2\\out\\production\\u2");
+        comandos.add(".\\out\\production\\u2");
         comandos.add("u2.Ejercicio10_repetidor.Main");
         //ProcessBuilder pb = new ProcessBuilder("java", "-classpath", "C:\\Users\\Joshua\\Documents\\GitHub\\ProgramacionServiciosProcesos\\u2\\out\\production\\u2", "u2.Ejercicio10_repetidor.Main");
         System.getProperty("java.class.path");
@@ -39,6 +39,7 @@ public class Main {
            }
            contador++;
         }
+
         try {
             new ProcessBuilder(comandos).start();
         } catch (IOException e) {
