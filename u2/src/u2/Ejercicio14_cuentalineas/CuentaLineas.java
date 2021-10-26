@@ -16,7 +16,8 @@ public class CuentaLineas {
             }
             bufferedReader.close();
 
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(".\\files\\" + fileName + "-numLineas.txt"));
+            String[] finalFileName = fileName.split("\\.");
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(".\\files\\" + finalFileName[0] + "-numLineas.txt"));
             bufferedWriter.write(contador + "");
             bufferedWriter.close();
         } catch (FileNotFoundException e) {

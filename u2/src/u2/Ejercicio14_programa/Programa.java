@@ -1,11 +1,14 @@
 package u2.Ejercicio14_programa;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Programa {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
         String[] fileNames = {"cuentalineas1.txt", "cuentalineas2.txt"};
         ArrayList<Process> procesos = new ArrayList<Process>();
 
@@ -38,8 +41,23 @@ public class Programa {
                 }
             }
         }
-        //Falta abrir los archivos, leer el dato, y mostrarlo por pantalla.
-        //Con un bucle abrimos los archivos uno por uno, y sumamos el número
-        //de líneas que contiene
+        int numLineas = 0;
+        for (String filename:fileNames)
+        {
+            String[] finalFileName = filename.split("\\.");
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(".\\files\\" + finalFileName[0] + "-numLineas.txt"));
+                numLineas += Integer.parseInt(bufferedReader.readLine());
+                bufferedReader.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("El número de líneas de ambos ficheros es: " + numLineas);
     }
 }
+//Falta abrir los archivos, leer el dato, y mostrarlo por pantalla.
+//Con un bucle abrimos los archivos uno por uno, y sumamos el número
+//de líneas que contiene
