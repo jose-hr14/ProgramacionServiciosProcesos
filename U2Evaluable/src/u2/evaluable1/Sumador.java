@@ -10,15 +10,16 @@ public class Sumador {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("files\\" + fileName));
 
-            int contador = 0;
-            while(bufferedReader.readLine() != null)
+            int suma = 0;
+            String linea = "";
+            while((linea = bufferedReader.readLine()) != null)
             {
-                contador++;
+                suma += Integer.parseInt(linea);
             }
             bufferedReader.close();
 
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\" + fileName + "-suma"));
-            bufferedWriter.write(String.valueOf(contador));
+            bufferedWriter.write(String.valueOf(suma));
             bufferedWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

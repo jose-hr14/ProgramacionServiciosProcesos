@@ -31,8 +31,6 @@ public class Programa {
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("files\\" + fileName + "-suma"));
                 contadorTotal += Integer.parseInt(bufferedReader.readLine());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
