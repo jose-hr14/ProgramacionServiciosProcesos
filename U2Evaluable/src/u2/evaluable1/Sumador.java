@@ -10,19 +10,20 @@ public class Sumador {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("files\\" + fileName));
 
-            int suma = 0;
-            String linea = "";
+            int sumador = 0;
+            String linea;
+            //Bucle para leer cada línea del fichero de entrada y sumar el número
+            //de cada línea
             while((linea = bufferedReader.readLine()) != null)
             {
-                suma += Integer.parseInt(linea);
+                sumador += Integer.parseInt(linea);
             }
             bufferedReader.close();
-
+            //Escribimos el resultado en un fichero cuyo nombre será
+            //el nombre del fichero original más -suma
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\" + fileName + "-suma"));
-            bufferedWriter.write(String.valueOf(suma));
+            bufferedWriter.write(String.valueOf(sumador));
             bufferedWriter.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
