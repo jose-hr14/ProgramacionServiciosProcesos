@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Programa {
     public static void main(String[] args) {
-        while (true) {
+
             ArrayList<Process> listaProcesos = new ArrayList<>();
             //Con este bucle, ejecutamos un programa sumador por cada nombre de archivo
             //que haya en el String[] args. Cada proceso se guarda en un array
@@ -38,6 +38,7 @@ public class Programa {
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new FileReader("files\\" + fileName + "-suma"));
                     sumadorTotal += Integer.parseInt(bufferedReader.readLine());
+                    bufferedReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -48,7 +49,5 @@ public class Programa {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
     }
 }
