@@ -6,7 +6,7 @@ public class Main {
         System.out.println("Voy a lanza un hilo");
         Thread pruebaHilo = new Thread(new PruebaHilo());
         pruebaHilo.setName("Mi hilo: ");
-        pruebaHilo.setPriority(10);
+        pruebaHilo.setPriority(Thread.NORM_PRIORITY);
         pruebaHilo.start();
 
         for (int i = 0; i < 1000; i++) {
