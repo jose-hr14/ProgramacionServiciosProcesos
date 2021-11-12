@@ -15,7 +15,6 @@ public class Main {
 
             ProcessBuilder processBuilder = new ProcessBuilder("java","-classpath",".\\out\\production\\u2", "u2.ejercicio09_generador.Main", a, b, nombreDoc);
             processBuilder.start();
-            System.getProperty("java.class.path");
         } catch (IOException e) {
             e.printStackTrace();
         }

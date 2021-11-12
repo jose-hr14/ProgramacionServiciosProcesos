@@ -61,14 +61,14 @@ public class Main {
         }while(!option.equals("Y") && !option.equals("N"));
         if(option.equals("Y")) {
             try {
-                new ProcessBuilder().command("C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe").start();
+                new ProcessBuilder("C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe").start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else {
             try {
-                new ProcessBuilder().command("C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe", "/nosplash").start();
+                new ProcessBuilder("C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\devenv.exe", "/nosplash").start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -77,7 +77,7 @@ public class Main {
     }
     public static void visualStudioCode(){
         try {
-            new ProcessBuilder().command("C:\\Users\\Joshua\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe").start();
+            new ProcessBuilder("C:\\Users\\Joshua\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe").start();
         } catch (IOException e) {
             e.printStackTrace();
         }
