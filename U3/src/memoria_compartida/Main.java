@@ -9,8 +9,17 @@ public class Main {
             t.setPriority(Thread.MAX_PRIORITY);
             t.start();
             Thread.State estadoHilo = t.getState();
+            /*
             if (estadoHilo == Thread.State.TERMINATED) {
                 System.out.println("Hilo terminado");
+            }
+             */
+            try {
+                t.join();
+                System.out.println("Hilo terminado");
+                //TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
