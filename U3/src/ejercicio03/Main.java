@@ -28,7 +28,6 @@ public class Main {
                     hiloTerminado++;
                 }
             }
-            System.out.println();
             Thread.sleep(1000);
         }
 
