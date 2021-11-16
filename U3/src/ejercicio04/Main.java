@@ -19,7 +19,7 @@ public class Main {
                 e.printStackTrace();
             }
             parar = scanner.nextLine();
-        }while(parar.equals(""));
+        }while(!parar.equals(""));
         runnable.setTerminar(true);
     }
 }

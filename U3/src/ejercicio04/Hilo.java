@@ -36,7 +36,7 @@ public class Hilo implements Runnable{
     public void run() {
         try {
             PrintWriter printWriter = new PrintWriter(new FileOutputStream("ej04.txt"));
-            while(terminar == true)
+            while(!terminar)
             {
                 printWriter.println("Hola mundo");
                 TimeUnit.SECONDS.sleep(frecuenciaSegundos);
