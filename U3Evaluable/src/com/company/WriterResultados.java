@@ -7,10 +7,13 @@ import java.io.IOException;
 
 public class WriterResultados {
     File archivo;
+    int identificador;
     BufferedWriter bufferedWriter;
     public WriterResultados() {
+        this.archivo = new File("busquedas");
+        this.identificador = -1;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(archivo));
+            this.bufferedWriter = new BufferedWriter(new FileWriter(archivo));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,15 +27,18 @@ public class WriterResultados {
         this.archivo = archivo;
     }
 
-    public void writeLine(String linea){
+    public synchronized void writeLine(String linea, int id, String cabecera){
         try {
+            if(id != this.identificador)
+                bufferedWriter.write(cabecera);
             bufferedWriter.write(linea + " \n");
+            identificador = id;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void writerClose()
+    public void closeWriter()
     {
         try {
             bufferedWriter.close();
@@ -40,4 +46,5 @@ public class WriterResultados {
             e.printStackTrace();
         }
     }
+
 }

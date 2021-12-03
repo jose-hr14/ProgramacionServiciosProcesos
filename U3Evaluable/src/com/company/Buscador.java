@@ -10,19 +10,48 @@ public class Buscador implements Runnable{
     String palabra;
     String nombreArchivo;
     ArrayList<String> listaLineas;
+    String cabecera;
     int numBusqueda;
+    WriterResultados writerResultados;
 
-    public Buscador(String palabra, String nombreArchivo, int numBusqueda) {
+    public Buscador(String palabra, String nombreArchivo, int numBusqueda, WriterResultados writerResultados) {
         this.palabra = palabra;
         this.nombreArchivo = nombreArchivo;
+        this.numBusqueda = numBusqueda;
+        this.listaLineas = new ArrayList<>();
+        this.writerResultados = writerResultados;
+    }
+
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    public void setListaLineas(ArrayList<String> listaLineas) {
+        this.listaLineas = listaLineas;
+    }
+
+    public String getCabecera() {
+        return cabecera;
+    }
+
+    public void setCabecera(String cabecera) {
+        this.cabecera = cabecera;
+    }
+
+    public void setNumBusqueda(int numBusqueda) {
         this.numBusqueda = numBusqueda;
     }
 
-    public Buscador(String palabra, String nombreArchivo, ArrayList<String> listaLineas, int numBusqueda) {
-        this.palabra = palabra;
-        this.nombreArchivo = nombreArchivo;
-        this.listaLineas = listaLineas;
-        this.numBusqueda = numBusqueda;
+    public WriterResultados getWriterResultados() {
+        return writerResultados;
+    }
+
+    public void setWriterResultados(WriterResultados writerResultados) {
+        this.writerResultados = writerResultados;
     }
 
     public void resultadoBusqueda()
@@ -40,13 +69,15 @@ public class Buscador implements Runnable{
                     listaLineas.add(contador + " " + linea);
                 }
             }
-            //numBusqueda + " " + nombreArchivo + " " + palabra + " " + listaLineas.size();
+            System.out.println("a");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //return linea;
+        cabecera = "---------------------------------------------------------------------------------- \n" +
+                "Search ID: " + numBusqueda + " File: " + nombreArchivo + " Word: " + palabra + " \n" +
+                "---------------------------------------------------------------------------------- \n";
     }
 
     public String getPalabra() {
@@ -68,5 +99,9 @@ public class Buscador implements Runnable{
     @Override
     public void run() {
         resultadoBusqueda();
+        for (String linea: listaLineas)
+        {
+            writerResultados.writeLine(linea, numBusqueda, cabecera);
+        }
     }
 }
