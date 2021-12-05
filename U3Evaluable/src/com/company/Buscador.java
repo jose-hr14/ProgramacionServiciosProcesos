@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Buscador implements Runnable{
     String palabra;
@@ -46,6 +47,11 @@ public class Buscador implements Runnable{
         this.numBusqueda = numBusqueda;
     }
 
+    public String getResultadoBusqueda()
+    {
+        return numBusqueda + " " + nombreArchivo + " " + palabra + " " + listaLineas.size();
+    }
+
     public WriterResultados getWriterResultados() {
         return writerResultados;
     }
@@ -54,7 +60,7 @@ public class Buscador implements Runnable{
         this.writerResultados = writerResultados;
     }
 
-    public void resultadoBusqueda()
+    public void realizarBusqueda()
     {
         String linea = "";
         try {
@@ -64,16 +70,17 @@ public class Buscador implements Runnable{
             while((linea = bufferedReader.readLine()) != null)
             {
                 contador++;
-                if(linea.contains(palabra))
+                if(linea.toUpperCase(Locale.ROOT).contains(palabra.toUpperCase()))
                 {
                     listaLineas.add(contador + " " + linea);
                 }
             }
-            System.out.println("a");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("El archivo " + nombreArchivo + " no se ha encontrado, no se pudo realizar la búsqueda");
+            //e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("El archivo " + nombreArchivo + " no se ha encontrado, no se pudo realizar la búsqueda");
+            //e.printStackTrace();
         }
         cabecera = "---------------------------------------------------------------------------------- \n" +
                 "Search ID: " + numBusqueda + " File: " + nombreArchivo + " Word: " + palabra + " \n" +
@@ -98,7 +105,7 @@ public class Buscador implements Runnable{
 
     @Override
     public void run() {
-        resultadoBusqueda();
+        realizarBusqueda();
         for (String linea: listaLineas)
         {
             writerResultados.writeLine(linea, numBusqueda, cabecera);
