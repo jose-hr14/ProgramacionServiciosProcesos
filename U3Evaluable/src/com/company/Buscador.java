@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class Buscador implements Runnable{
+    ArrayList<String> guardaLineas;
     String palabra;
     String nombreArchivo;
-    ArrayList<String> listaLineas;
+
     String cabecera;
     int numBusqueda;
     WriterResultados writerResultados;
@@ -19,7 +20,7 @@ public class Buscador implements Runnable{
         this.palabra = palabra;
         this.nombreArchivo = nombreArchivo;
         this.numBusqueda = numBusqueda;
-        this.listaLineas = new ArrayList<>();
+        this.guardaLineas = new ArrayList<>();
         this.writerResultados = writerResultados;
     }
 
@@ -31,8 +32,8 @@ public class Buscador implements Runnable{
         this.nombreArchivo = nombreArchivo;
     }
 
-    public void setListaLineas(ArrayList<String> listaLineas) {
-        this.listaLineas = listaLineas;
+    public void setGuardaLineas(ArrayList<String> guardaLineas) {
+        this.guardaLineas = guardaLineas;
     }
 
     public String getCabecera() {
@@ -49,7 +50,7 @@ public class Buscador implements Runnable{
 
     public String getResultadoBusqueda()
     {
-        return numBusqueda + " " + nombreArchivo + " " + palabra + " " + listaLineas.size();
+        return numBusqueda + " " + nombreArchivo + " " + palabra + " " + guardaLineas.size();
     }
 
     public WriterResultados getWriterResultados() {
@@ -66,13 +67,13 @@ public class Buscador implements Runnable{
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(nombreArchivo));
             int contador = 0;
-            listaLineas = new ArrayList<>();
+            guardaLineas = new ArrayList<>();
             while((linea = bufferedReader.readLine()) != null)
             {
                 contador++;
                 if(linea.toUpperCase(Locale.ROOT).contains(palabra.toUpperCase()))
                 {
-                    listaLineas.add(contador + " " + linea);
+                    guardaLineas.add(contador + " " + linea);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -95,8 +96,8 @@ public class Buscador implements Runnable{
         return nombreArchivo;
     }
 
-    public ArrayList<String> getListaLineas() {
-        return listaLineas;
+    public ArrayList<String> getGuardaLineas() {
+        return guardaLineas;
     }
 
     public int getNumBusqueda() {
@@ -106,7 +107,7 @@ public class Buscador implements Runnable{
     @Override
     public void run() {
         realizarBusqueda();
-        for (String linea: listaLineas)
+        for (String linea: guardaLineas)
         {
             writerResultados.writeLine(linea, numBusqueda, cabecera);
         }

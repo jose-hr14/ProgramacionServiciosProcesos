@@ -85,7 +85,7 @@ public class Main {
                 if((opcion = scanner.nextLine()).equals("0"))
                     return;
             }while(!opcion.matches("[1-" + listaBuscadores.size() + "]"));
-            for (String linea: listaBuscadores.get(Integer.parseInt(opcion) - 1).getListaLineas())
+            for (String linea: listaBuscadores.get(Integer.parseInt(opcion) - 1).getGuardaLineas())
             {
                 System.out.println(linea);
             }
