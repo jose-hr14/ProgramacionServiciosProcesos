@@ -25,7 +25,6 @@ public class Cliente {
                 flujoSalida.writeUTF(new Scanner(System.in).nextLine());
                 System.out.println("Enviando información al servidor");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
