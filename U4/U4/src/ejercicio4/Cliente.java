@@ -1,9 +1,8 @@
-package ejemplo2;
+package ejercicio4;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -19,9 +18,6 @@ public class Cliente {
             DataOutputStream flujoSalida = new DataOutputStream(conexion.getOutputStream());
             flujoSalida.writeUTF(new Scanner(System.in).nextLine());
             System.out.println("Enviando información al servidor");
-            DataInputStream flujoEntrada = new DataInputStream(conexion.getInputStream());
-            System.out.println(flujoEntrada.readUTF());
-
             conexion.close();
         } catch (IOException e) {
             e.printStackTrace();

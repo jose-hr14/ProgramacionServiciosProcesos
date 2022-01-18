@@ -1,6 +1,5 @@
-package ejemplo2;
+package ejercicio4;
 
-import javax.xml.crypto.Data;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,20 +21,10 @@ public class Servidor {
         {
             try
             {
-
                 System.out.println("Esperando al cliente");
                 Socket cliente = servidor.accept();
-                System.out.println("Cliente conectado");
-
-                //Flujo de entrada del primer cliente
-                InputStream entrada = cliente.getInputStream();
-                DataInputStream flujoEntrada = new DataInputStream(entrada);
-
-                String mensaje = flujoEntrada.readUTF();
-                System.out.println("Cliente: " + mensaje);
-
-                DataOutputStream flujoSalida = new DataOutputStream(cliente.getOutputStream());
-                flujoSalida.writeUTF("Servidor: soy el servidor");
+                Thread hiloConexion = new Thread((new HiloConexionCliente(cliente)));
+                hiloConexion.start();
 
                 //Cerramos conexión
                 //cliente.close();
