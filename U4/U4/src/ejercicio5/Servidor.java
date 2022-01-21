@@ -24,11 +24,10 @@ public class Servidor {
 
             hiloLectura.join();
             hiloEscritura.join();
-
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         } finally {
             // Cerramos conexiones
             System.out.println("Finalizando servidor");
@@ -36,7 +35,7 @@ public class Servidor {
                 conexionCliente.close();
                 server.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }

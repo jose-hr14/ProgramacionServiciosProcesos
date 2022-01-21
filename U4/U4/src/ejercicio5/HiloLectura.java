@@ -30,7 +30,7 @@ public class HiloLectura implements Runnable{
             } while(!lineaRecibida.equalsIgnoreCase("fin")); // Leemos líneas y las enviamos hasta que la línea enviada o recibida sea "fin"
             flujoEntrada.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }

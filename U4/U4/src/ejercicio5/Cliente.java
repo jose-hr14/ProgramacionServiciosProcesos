@@ -2,6 +2,7 @@ package ejercicio5;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Scanner;
 
 public class Cliente {
@@ -20,16 +21,17 @@ public class Cliente {
             hiloEscritura.join();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
+            //e.printStackTrace();
+        }
+        finally {
             // Cerramos conexiones
             System.out.println("Finalizando cliente");
             try {
                 cliente.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
     }

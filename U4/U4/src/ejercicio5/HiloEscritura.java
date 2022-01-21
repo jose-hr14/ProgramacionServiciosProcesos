@@ -31,7 +31,7 @@ public class HiloEscritura implements Runnable{
             } while(!lineaEnviar.equalsIgnoreCase("fin")); // Leemos líneas y las enviamos hasta que la línea enviada o recibida sea "fin"
             conexionCliente.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
