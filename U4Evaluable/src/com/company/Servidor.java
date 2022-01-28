@@ -12,6 +12,7 @@ public class Servidor {
         Socket conexionCliente = null;
         List<Socket> listaClientes = new ArrayList<>();
         System.out.println("---SERVIDOR---");
+        System.out.println("Esperando conexión de un cliente...");
         try {
             server = new ServerSocket(1234);
         } catch (IOException e) {
@@ -20,7 +21,6 @@ public class Servidor {
         try {
             while(true)
             {
-                System.out.println("Esperando conexión de un cliente...");
                 conexionCliente = server.accept(); // Esperamos que se conecte un cliente
                 System.out.println("Cliente conectado en el puerto " + conexionCliente.getPort()); // Se ha conectado un cliente
                 listaClientes.add(conexionCliente);

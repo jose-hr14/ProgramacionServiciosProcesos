@@ -18,12 +18,10 @@ public class HiloServidor implements Runnable{
 
     @Override
     public void run() {
-        String mensaje = "";
+        String mensaje;
         try {
             while(!cliente.isClosed())
             {
-                System.out.println("Cliente conectado");
-                //Flujo de entrada del primer cliente
                 InputStream entrada = cliente.getInputStream();
                 DataInputStream flujoEntrada = new DataInputStream(entrada);
 
@@ -37,7 +35,7 @@ public class HiloServidor implements Runnable{
                 }
             }
         } catch (IOException e) {
-
+            //e.printStackTrace();
         }
     }
 }
